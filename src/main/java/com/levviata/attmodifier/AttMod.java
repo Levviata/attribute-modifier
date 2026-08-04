@@ -82,6 +82,19 @@ public class AttMod {
                         0,     // armorToughness
                         0      // luck
                 ));
+
+                attributeMap.put("minecraft:diamond_chestplate", new AttributeValues(
+                        0,     // maxHealth
+                        0,     // followRange
+                        0,     // knockbackResistance
+                        0,   // movementSpeed
+                        0,     // flyingSpeed
+                        0,     // attackDamage
+                        0,     // attackSpeed
+                        100,     // armor
+                        10,     // armorToughness
+                        0      // luck
+                ));
                 FileUtils.writeStringToFile(this.configFile, gson.toJson(attributeMap), StandardCharsets.UTF_8);
             } else { // read and write as normal
                 Type mapType = (new TypeToken<HashMap<String, AttributeValues>>() {
