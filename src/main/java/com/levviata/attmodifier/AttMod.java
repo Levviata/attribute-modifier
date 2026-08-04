@@ -41,13 +41,13 @@ public class AttMod {
         try {
             Gson gson = (new GsonBuilder()).setLenient().setPrettyPrinting().create();
             this.configFile = new File("config/attributeModifiers.json");
-            if (!this.configFile.exists()) {
+            if (!this.configFile.exists()) { // make config and examples
                 this.configFile.createNewFile();
                 attributeMap = new HashMap<>();
                 attributeMap.put("minecraft:diamond_hoe", new AttributeValues(
                         0, 0,0,0,0,10,2,0,0,0));
                 FileUtils.writeStringToFile(this.configFile, gson.toJson(attributeMap), StandardCharsets.UTF_8);
-            } else {
+            } else { // read and write as normal
                 Type mapType = (new TypeToken<HashMap<String, AttributeValues>>() {
 
                 }).getType();
