@@ -39,13 +39,49 @@ public class AttMod {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         try {
-            Gson gson = (new GsonBuilder()).setLenient().setPrettyPrinting().create();
+            Gson gson = (new GsonBuilder()).setLenient().setPrettyPrinting().registerTypeAdapter(AttributeValues.class, new AttributeValuesSerializer()).create();
             this.configFile = new File("config/attributeModifiers.json");
             if (!this.configFile.exists()) { // make config and examples
                 this.configFile.createNewFile();
                 attributeMap = new HashMap<>();
                 attributeMap.put("minecraft:diamond_hoe", new AttributeValues(
-                        0, 0,0,0,0,10,2,0,0,0));
+                        10,    // maxHealth
+                        60,    // followRange
+                        2,     // knockbackResistance
+                        0.7F,   // movementSpeed
+                        0.15F,  // flyingSpeed
+                        10.0F,  // attackDamage
+                        2.0F,   // attackSpeed
+                        2.0F,   // armor
+                        1.0F,   // armorToughness
+                        5.0F    // luck
+                ));
+
+                attributeMap.put("minecraft:diamond_sword", new AttributeValues(
+                        10,    // maxHealth
+                        0,     // followRange
+                        0,     // knockbackResistance
+                        0,     // movementSpeed
+                        0,     // flyingSpeed
+                        -1,     // attackDamage
+                        0,     // attackSpeed
+                        5,     // armor
+                        0,     // armorToughness
+                        5.0F    // luck
+                ));
+
+                attributeMap.put("minecraft:diamond_pickaxe", new AttributeValues(
+                        0,     // maxHealth
+                        0,     // followRange
+                        0,     // knockbackResistance
+                        1.1F,   // movementSpeed
+                        0,     // flyingSpeed
+                        -1,     // attackDamage
+                        -1,     // attackSpeed
+                        0,     // armor
+                        0,     // armorToughness
+                        0      // luck
+                ));
                 FileUtils.writeStringToFile(this.configFile, gson.toJson(attributeMap), StandardCharsets.UTF_8);
             } else { // read and write as normal
                 Type mapType = (new TypeToken<HashMap<String, AttributeValues>>() {
