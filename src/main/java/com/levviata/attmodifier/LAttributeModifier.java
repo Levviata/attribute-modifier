@@ -29,8 +29,28 @@ public class LAttributeModifier {
         ATTRIBUTES_AVAILABLE.add(SharedMonsterAttributes.LUCK);
     }
 
+    //vanilla uuids
     private static final UUID ATTACK_DAMAGE_MODIFIER = UUID.fromString("CB3F55D3-645C-4F38-A497-9C13A33DB5CF");
     private static final UUID ATTACK_SPEED_MODIFIER = UUID.fromString("FA233E1C-4180-4865-B01B-BCCE9785ACA3");
+    // randomized uuids
+    private static final UUID MAX_HEALTH_UUID =
+            UUID.fromString("5b94c2f0-6a6e-4b7d-9f6f-8d2a4d7c1e01");
+    private static final UUID FOLLOW_RANGE_UUID =
+            UUID.fromString("7d31a6c2-15bb-47d5-aef5-3c94a87f3202");
+    private static final UUID KNOCKBACK_RESISTANCE_UUID =
+            UUID.fromString("93ef45e8-12c0-4f17-8c3e-61d2a94b5f03");
+    private static final UUID MOVEMENT_SPEED_UUID =
+            UUID.fromString("b7d3a6f9-58d4-4b2f-a0f7-9c13e4d8a904");
+    private static final UUID FLYING_SPEED_UUID =
+            UUID.fromString("d2f9c781-7b48-4c81-93ae-0d7f2b6e1505");
+    private static final UUID ARMOR_UUID =
+            UUID.fromString("e5a14d92-4f33-4d0f-b1ce-7a8d0f2c3606");
+    private static final UUID ARMOR_TOUGHNESS_UUID =
+            UUID.fromString("f84c7b13-2d75-4d8b-9ef4-4b0a91d54707");
+    private static final UUID LUCK_UUID =
+            UUID.fromString("18b4f6d0-8ec1-4cba-a57e-52d6f83a7808");
+
+    private static final String nameIn = "Lev Attribute Modifier";
 
    @SubscribeEvent
     public void onAttributeModifier(ItemAttributeModifierEvent event) {
@@ -41,11 +61,56 @@ public class LAttributeModifier {
             // 0 addition, 1 multiply base, 2 multiply total
             if (attributeValues.getAttackSpeed() != -1.0F) {
                 event.removeAttribute(SharedMonsterAttributes.ATTACK_SPEED);
-                event.addModifier(SharedMonsterAttributes.ATTACK_SPEED, new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", /*- 4.0D +*/ attributeValues.getAttackSpeed(), 0));
+                event.addModifier(SharedMonsterAttributes.ATTACK_SPEED,
+                        new AttributeModifier(ATTACK_SPEED_MODIFIER, nameIn, attributeValues.getAttackSpeed(), 0));
             }
             if (attributeValues.getAttackDamage() != -1.0F) {
                 event.removeAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
-                event.addModifier(SharedMonsterAttributes.ATTACK_DAMAGE, new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", attributeValues.getAttackDamage(), 0));
+                event.addModifier(SharedMonsterAttributes.ATTACK_DAMAGE,
+                        new AttributeModifier(ATTACK_DAMAGE_MODIFIER, nameIn, attributeValues.getAttackDamage(), 0));
+            }
+            if (attributeValues.getArmor() != -1.0F) {
+                event.removeAttribute(SharedMonsterAttributes.ARMOR);
+                event.addModifier(SharedMonsterAttributes.ARMOR,
+                        new AttributeModifier(ARMOR_UUID, nameIn, attributeValues.getArmor(), 0));
+            }
+            if (attributeValues.getArmorToughness() != -1.0F) {
+                event.removeAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS);
+                event.addModifier(SharedMonsterAttributes.ARMOR_TOUGHNESS,
+                        new AttributeModifier(ARMOR_TOUGHNESS_UUID, nameIn, attributeValues.getArmorToughness(), 0));
+            }
+            if (attributeValues.getLuck() != -1.0F) {
+                event.removeAttribute(SharedMonsterAttributes.LUCK);
+                event.addModifier(SharedMonsterAttributes.LUCK,
+                        new AttributeModifier(LUCK_UUID, nameIn, attributeValues.getLuck(), 0));
+            }
+            if (attributeValues.getFlyingSpeed() != -1.0F) {
+                event.removeAttribute(SharedMonsterAttributes.FLYING_SPEED);
+                event.addModifier(SharedMonsterAttributes.FLYING_SPEED,
+                        new AttributeModifier(FLYING_SPEED_UUID, nameIn, attributeValues.getFlyingSpeed(), 0));
+            }
+            if (attributeValues.getMaxHealth() != -1.0F) {
+                event.removeAttribute(SharedMonsterAttributes.MAX_HEALTH);
+                event.addModifier(SharedMonsterAttributes.MAX_HEALTH,
+                        new AttributeModifier(MAX_HEALTH_UUID, nameIn, attributeValues.getMaxHealth(), 0));
+            }
+
+            if (attributeValues.getFollowRange() != -1.0F) {
+                event.removeAttribute(SharedMonsterAttributes.FOLLOW_RANGE);
+                event.addModifier(SharedMonsterAttributes.FOLLOW_RANGE,
+                        new AttributeModifier(FOLLOW_RANGE_UUID, nameIn, attributeValues.getFollowRange(), 0));
+            }
+
+            if (attributeValues.getKnockbackResistance() != -1.0F) {
+                event.removeAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE);
+                event.addModifier(SharedMonsterAttributes.KNOCKBACK_RESISTANCE,
+                        new AttributeModifier(KNOCKBACK_RESISTANCE_UUID, nameIn, attributeValues.getKnockbackResistance(), 0));
+            }
+
+            if (attributeValues.getMovementSpeed() != -1.0F) {
+                event.removeAttribute(SharedMonsterAttributes.MOVEMENT_SPEED);
+                event.addModifier(SharedMonsterAttributes.MOVEMENT_SPEED,
+                        new AttributeModifier(MOVEMENT_SPEED_UUID, nameIn, attributeValues.getMovementSpeed(), 2));
             }
         }
     }
