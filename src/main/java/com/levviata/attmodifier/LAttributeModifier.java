@@ -61,13 +61,13 @@ public class LAttributeModifier {
             AttributeValues attributeValues = getAttributes().get(key);
             // for int operationIn value:
             // 0 addition, 1 multiply base, 2 multiply total
-            if (attributeValues.getAttackSpeed() != 0F && attributeValues.getAttackSpeed() > 0F) {
+            if (attributeValues.getAttackSpeed() != 0F) {
                 event.removeAttribute(SharedMonsterAttributes.ATTACK_SPEED);
                 event.addModifier(SharedMonsterAttributes.ATTACK_SPEED,
-                        new AttributeModifier(ATTACK_SPEED_MODIFIER, nameIn, attributeValues.getAttackSpeed(), 0));
-            } else if (attributeValues.getAttackSpeed() < -0.0F) {
+                        new AttributeModifier(ATTACK_SPEED_MODIFIER, nameIn, attributeValues.getAttackSpeed(), 1));
+            }/* else if (attributeValues.getAttackSpeed() < -0.0F) {
                 event.removeAttribute(SharedMonsterAttributes.ATTACK_SPEED);
-            }
+            }*/
 
             if (attributeValues.getAttackDamage() != 0F && attributeValues.getAttackDamage() > 0F) {
                 event.removeAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
