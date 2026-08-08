@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/damage-modifier.api.iml" filepath="$PROJECT_DIR$/.idea/modules/damage-modifier.api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/damage-modifier.ideVirtualMain.iml" filepath="$PROJECT_DIR$/.idea/modules/damage-modifier.ideVirtualMain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/damage-modifier.main.iml" filepath="$PROJECT_DIR$/.idea/modules/damage-modifier.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/damage-modifier.test.iml" filepath="$PROJECT_DIR$/.idea/modules/damage-modifier.test.iml" />
+    </modules>
+  </component>
+</project>
