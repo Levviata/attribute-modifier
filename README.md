@@ -1,4 +1,6 @@
 # Attribute Modifier
+https://modrinth.com/mod/attribute-modifier
+
 Complete control over any item's attributes vanilla or modded inside the configuration.
 
 ## Features
