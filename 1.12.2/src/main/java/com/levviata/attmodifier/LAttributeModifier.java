@@ -14,6 +14,7 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 import java.util.*;
 
+import static com.expandedevents.ExpandedEvents.LOGGER;
 import static com.levviata.attmodifier.AttMod.getAttributeMap;
 
 public class LAttributeModifier {
@@ -48,8 +49,13 @@ public class LAttributeModifier {
        if (event.getItemStack() != null || event.getItemStack().isEmpty()) {
            item = event.getItemStack();
        }
-       String key = String.valueOf(ForgeRegistries.ITEMS.getKey(item.getItem()));
 
+       String key;
+       if (item.getMetadata() == 0) {
+           key  = String.valueOf(ForgeRegistries.ITEMS.getKey(item.getItem()));
+       } else
+           key  = ForgeRegistries.ITEMS.getKey(item.getItem()) + ":" + item.getMetadata();
+       
        EntityEquipmentSlot naturalSlot =
                EntityLiving.getSlotForItemStack(event.getItemStack());
 

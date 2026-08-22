@@ -45,56 +45,83 @@ public class AttMod {
                 this.configFile.createNewFile();
                 attributeMap = new HashMap<>();
                 attributeMap.put("minecraft:diamond_hoe", new AttributeValues(
-                        10,    // maxHealth
-                        60,    // followRange
-                        2,     // knockbackResistance
-                        0.7F,   // movementSpeed
-                        0.15F,  // flyingSpeed
-                        10.0F,  // attackDamage
-                        2.0F,   // attackSpeed
-                        2.0F,   // armor
-                        1.0F,   // armorToughness
-                        5.0F    // luck
+                        10,
+                        60,
+                        2,
+                        0.7F,
+                        0.15F,
+                        10.0F,
+                        2.0F,
+                        2.0F,
+                        1.0F,
+                        5.0F
                 ));
 
                 attributeMap.put("minecraft:diamond_sword", new AttributeValues(
-                        10,    // maxHealth
-                        0,     // followRange
-                        0,     // knockbackResistance
-                        0,     // movementSpeed
-                        0,     // flyingSpeed
-                        -1,     // attackDamage
-                        0,     // attackSpeed
-                        5,     // armor
-                        0,     // armorToughness
-                        5.0F    // luck
+                        10,
+                        0,
+                        0,
+                        0,
+                        0,
+                        -1,
+                        0,
+                        5,
+                        0,
+                        5.0F
                 ));
 
                 attributeMap.put("minecraft:diamond_pickaxe", new AttributeValues(
-                        0,     // maxHealth
-                        0,     // followRange
-                        0,     // knockbackResistance
-                        1.1F,   // movementSpeed
-                        0,     // flyingSpeed
-                        -1,     // attackDamage
-                        -1,     // attackSpeed
-                        0,     // armor
-                        0,     // armorToughness
-                        0      // luck
+                        0,
+                        0,
+                        0,
+                        1.1F,
+                        0,
+                        -1,
+                        -1,
+                        0,
+                        0,
+                        0
                 ));
 
                 attributeMap.put("minecraft:diamond_chestplate", new AttributeValues(
-                        0,     // maxHealth
-                        0,     // followRange
-                        0,     // knockbackResistance
-                        0,   // movementSpeed
-                        0,     // flyingSpeed
-                        0,     // attackDamage
-                        0,     // attackSpeed
-                        100,     // armor
-                        10,     // armorToughness
-                        0      // luck
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        100,
+                        10,
+                        0
                 ));
+
+                attributeMap.put("minecraft:dye:11", new AttributeValues(
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        1,
+                        0,
+                        0,
+                        10,
+                        0
+                ));
+
+                attributeMap.put("minecraft:dye:3", new AttributeValues(
+                        0,
+                        0,
+                        0,
+                        1.2F,
+                        0,
+                        3,
+                        0,
+                        0,
+                        10,
+                        0
+                ));
+
                 FileUtils.writeStringToFile(this.configFile, gson.toJson(attributeMap), StandardCharsets.UTF_8);
             } else { // read and write as normal
                 Type mapType = (new TypeToken<HashMap<String, AttributeValues>>() {
