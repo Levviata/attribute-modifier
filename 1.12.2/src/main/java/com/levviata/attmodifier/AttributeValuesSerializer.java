@@ -9,6 +9,8 @@ import java.lang.reflect.Type;
 
 public class AttributeValuesSerializer implements JsonSerializer<AttributeValues> {
 
+    // if attribute zero skip writing the value to the config.
+    // needed for default examples construction
     @Override
     public JsonElement serialize(AttributeValues src, Type typeOfSrc, JsonSerializationContext context) {
         JsonObject obj = new JsonObject();
