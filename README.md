@@ -1,5 +1,13 @@
+## Download
+(kindly use modrinth)
+
+Modrinth: https://modrinth.com/mod/attribute-modifier
+
+CurseForge: https://www.curseforge.com/minecraft/mc-mods/attribute-modifier
+
+GitHub: https://github.com/Levviata/attribute-modifier/releases
+
 # Attribute Modifier
-https://modrinth.com/mod/attribute-modifier
 
 Complete control over any item's attributes vanilla or modded inside the configuration.
 
