@@ -34,6 +34,8 @@ Mixin Booter is also required.
 ## Configuration
 The file is named attributeModifiers, its a JSON file.
 
+#### Read more on the wiki: https://github.com/Levviata/attribute-modifier/wiki/Configuration
+
 Examples:
 
 ```java
@@ -67,17 +69,6 @@ Examples:
   }
 }
 ```
-(The values are stored as Floats).
-
-You can add as many attributes as you want, but you can't repeat them.
-
-There is no set maximum or minimum value, negative values will work, but not for Attack Damage, Flying Speed, and Follow Range attributes.
-
-Movement Speed and Attack Speed attribute are percentages, a value of 1.1 gives the player +110% speed, a value of -0.6 -60% speed and so on. 
-
-For Attack Speed a value of -60% equals 1.6 attack speed (average speed). I know its quirky, but it works so Im letting it be for now.
-
-A value of 0 removes the attribute. To remove Attack Damage, Flying Speed, or Follow Range attributes use -1 or any negative value.
 
 ### What is an attribute?
 Attributes control certain numeric properties of players, mobs, and armor stands. Every entity has a base value for each of its attributes, and modifiers that determine the final value ([source: wiki](https://minecraft.wiki/w/Attribute)).
