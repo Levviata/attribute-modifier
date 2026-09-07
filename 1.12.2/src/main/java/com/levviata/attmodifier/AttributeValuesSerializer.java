@@ -57,6 +57,9 @@ public class AttributeValuesSerializer implements JsonSerializer<AttributeValues
         if (src.getEnchantability() != 0)
             obj.addProperty("enchantability", src.getEnchantability());
 
+        if (src.getHarvestLevel() != 0)
+            obj.addProperty("harvestLevel", src.getHarvestLevel());
+
         return obj;
     }
 }

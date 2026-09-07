@@ -6,6 +6,7 @@ import com.google.gson.reflect.TypeToken;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
@@ -155,6 +156,42 @@ public class AttMod {
                         0
                 ));
 
+                attributeMap.put("minecraft:iron_pickaxe", new AttributeValues(
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        420,
+                        0,
+                        100,
+                        100,
+                        5
+                ));
+
+                attributeMap.put("minecraft:iron_sword", new AttributeValues(
+                        10,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        1050,
+                        5,
+                        0,
+                        200,
+                        0
+                ));
+
                 FileUtils.writeStringToFile(this.configFile, gson.toJson(attributeMap), StandardCharsets.UTF_8);
             } else { // read and write as normal
                 Type mapType = (new TypeToken<HashMap<String, AttributeValues>>() {}).getType();
@@ -168,5 +205,10 @@ public class AttMod {
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
         MinecraftForge.EVENT_BUS.register(new LAttributeModifier());
+    }
+
+    @Mod.EventHandler
+    public void postInit(FMLPostInitializationEvent event) {
+
     }
 }
