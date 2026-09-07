@@ -15,6 +15,7 @@ public class AttributeValues {
     private int stackSize;
     private float efficiency;
     private int enchantability;
+    private int harvestLevel;
 
     // every time FMLPreInitializationEvent runs, attributeMap gets written with the entries of attributeModifier.json (cfg).
     // Holding an entry for the map as <String, AttributeValues>, these are then requested at LAttributeModifier.java and modified.
@@ -32,7 +33,8 @@ public class AttributeValues {
             int durability,
             int stackSize,
             float efficiency,
-            int enchantability) {
+            int enchantability,
+            int harvestLevel) {
         this.maxHealth = maxHealth;
         this.followRange = followRange;
         this.knockbackResistance = knockbackResistance;
@@ -47,6 +49,7 @@ public class AttributeValues {
         this.stackSize = stackSize;
         this.efficiency = efficiency;
         this.enchantability = enchantability;
+        this.harvestLevel = harvestLevel;
     }
 
     public float getMaxHealth() {
@@ -107,5 +110,9 @@ public class AttributeValues {
 
     public int getEnchantability() {
         return enchantability;
+    }
+
+    public int getHarvestLevel() {
+        return harvestLevel;
     }
 }

@@ -181,22 +181,42 @@ public class LAttributeModifier {
             }
 
             if (attributeValues.getEnchantability() != 0F) {
-                material = getObjectFromClass(ItemTool.class, Item.ToolMaterial.class, event.getItemStack().getItem());
-
-                if (material == null) { // might not be necessary
-                    material = getObjectFromClass(ItemSword.class, Item.ToolMaterial.class, event.getItemStack().getItem());
-                }
-                // TODO if its true that setting the enchantability for one item sets it for the whole material, restore the previous material enchantability.
-                if  (material != null) {
-                    ReflectionHelper.setPrivateValue(Item.ToolMaterial.class,
-                            material,
-                            (int)attributeValues.getEnchantability(),
-                            MATERIAL_ENCHANTABILITY_INDEX);
-                }
+                changeMaterial(material, event, attributeValues.getEnchantability(), attributeValues);
             }
 
+            if (attributeValues.getHarvestLevel() != 0F) {
+                changeMaterial(material, event, attributeValues.getHarvestLevel(), attributeValues);
+            }
         }
         // END MODIFY ATTRIBUTES //
+    }
+
+    private void changeMaterial(Item.ToolMaterial material, ItemAttributeModifierEvent event, int value, AttributeValues attValues) {
+        material = getObjectFromClass(ItemTool.class, Item.ToolMaterial.class, event.getItemStack().getItem());
+
+        if (material == null) { // might not be necessary
+            material = getObjectFromClass(ItemSword.class, Item.ToolMaterial.class, event.getItemStack().getItem());
+        }
+
+        // TODO if its true that setting the enchantability for one item sets it for the whole material, restore the previous material enchantability.
+        // same for harvest level
+
+        if  (material != null) {
+            // check whether value is harvest level or enchantability
+            if (value == attValues.getEnchantability()){
+                ReflectionHelper.setPrivateValue(Item.ToolMaterial.class,
+                        material,
+                        value,
+                        MATERIAL_ENCHANTABILITY_INDEX);
+            }
+
+            if (value == attValues.getHarvestLevel()){
+                ReflectionHelper.setPrivateValue(Item.ToolMaterial.class,
+                        material,
+                        value,
+                        MATERIAL_HARVEST_LEVEL_INDEX);
+            }
+        }
     }
 
     @SubscribeEvent

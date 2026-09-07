@@ -61,6 +61,7 @@ public class AttMod {
                         50052,
                         4,
                         0,
+                        0,
                         0
                 ));
 
@@ -78,6 +79,7 @@ public class AttMod {
                         0,
                         0,
                         0,
+                        0,
                         0
                 ));
 
@@ -89,6 +91,7 @@ public class AttMod {
                         0,
                         -1,
                         -1,
+                        0,
                         0,
                         0,
                         0,
@@ -112,6 +115,7 @@ public class AttMod {
                         0,
                         0,
                         0,
+                        0,
                         0
                 ));
 
@@ -129,6 +133,7 @@ public class AttMod {
                         0,
                         0,
                         0,
+                        0,
                         0
                 ));
 
@@ -139,6 +144,7 @@ public class AttMod {
                         1.2F,
                         0,
                         3,
+                        0,
                         0,
                         0,
                         0,
