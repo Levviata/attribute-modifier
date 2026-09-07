@@ -60,8 +60,6 @@ public class LAttributeModifier {
        }
 
        String key;
-       //LOGGER.info("HELD IS KEY {}", item);
-       //LOGGER.info("METADATA IS {}", item.getMetadata());
 
        int correctData = item.getMetadata();
 
@@ -76,7 +74,7 @@ public class LAttributeModifier {
            key  = String.valueOf(ForgeRegistries.ITEMS.getKey(item.getItem()));
        } else {
            key  = ForgeRegistries.ITEMS.getKey(item.getItem()) + ":" + correctData;
-           // LOGGER.info("HELD IS MODIFIED KEY {}", key);
+
        }
 
        EntityEquipmentSlot naturalSlot =
@@ -163,19 +161,18 @@ public class LAttributeModifier {
             }
 
             if (attributeValues.getDurability() <= -1.0F) { // if equal or above -1. -1 is unbreakable so I need to check for that
-                event.getItemStack().getItem().setMaxDamage(attributeValues.getDurability()); // set durability
+                event.getItemStack().getItem().setMaxDamage(attributeValues.getDurability());
             }
 
             if (attributeValues.getStackSize() != 0F) {
                 event.getItemStack().getItem().setMaxStackSize(attributeValues.getStackSize());
             }
 
-            if (attributeValues.getEfficiency() != 0F) { // what am i trying to set? is this private variable accessible? it works. yes the setPrivateValue() does that
-                //Class <? super T > classToAccess, T instance, E value, int fieldIndex
+            if (attributeValues.getEfficiency() != 0F) {
                 ReflectionHelper.setPrivateValue(ItemTool.class,
                         (ItemTool)event.getItemStack().getItem(),
                         (float)attributeValues.getEfficiency(), //maybe remove cast
-                        TOOL_EFFICIENCY_INDEX); // effectiveBlocks > efficiency i guess? yes
+                        TOOL_EFFICIENCY_INDEX);
 
                 /*Float efficiency = ReflectionHelper.getPrivateValue(ItemTool.class,
                         (ItemTool)event.getItemStack().getItem(),
@@ -195,11 +192,6 @@ public class LAttributeModifier {
                             material,
                             (int)attributeValues.getEnchantability(),
                             MATERIAL_ENCHANTABILITY_INDEX);
-
-                    /*int ench = ReflectionHelper.getPrivateValue(Item.ToolMaterial.class,
-                            material,
-                            MATERIAL_ENCHANTABILITY_INDEX);
-                    LOGGER.info("WE ARE GETTING " + ench + " VALUE");*/
                 }
             }
 
