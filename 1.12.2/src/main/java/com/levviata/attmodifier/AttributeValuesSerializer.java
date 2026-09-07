@@ -45,6 +45,18 @@ public class AttributeValuesSerializer implements JsonSerializer<AttributeValues
         if (src.getLuck() != 0)
             obj.addProperty("luck", src.getLuck());
 
+        if (src.getDurability() != 0)
+            obj.addProperty("durability", src.getDurability());
+
+        if (src.getStackSize() != 0)
+            obj.addProperty("stackSize", src.getStackSize());
+
+        if (src.getEfficiency() != 0)
+            obj.addProperty("efficiency", src.getEfficiency());
+
+        if (src.getEnchantability() != 0)
+            obj.addProperty("enchantability", src.getEnchantability());
+
         return obj;
     }
 }

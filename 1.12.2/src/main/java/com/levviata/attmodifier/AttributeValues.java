@@ -1,7 +1,6 @@
 package com.levviata.attmodifier;
 
 public class AttributeValues {
-
     private float maxHealth;
     private float followRange;
     private float knockbackResistance;
@@ -12,7 +11,13 @@ public class AttributeValues {
     private float armor;
     private float armorToughness;
     private float luck;
+    private int durability;
+    private int stackSize;
+    private float efficiency;
+    private int enchantability;
 
+    // every time FMLPreInitializationEvent runs, attributeMap gets written with the entries of attributeModifier.json (cfg).
+    // Holding an entry for the map as <String, AttributeValues>, these are then requested at LAttributeModifier.java and modified.
     public AttributeValues(
             float maxHealth,
             float followRange,
@@ -23,8 +28,11 @@ public class AttributeValues {
             float attackSpeed,
             float armor,
             float armorToughness,
-            float luck) {
-
+            float luck,
+            int durability,
+            int stackSize,
+            float efficiency,
+            int enchantability) {
         this.maxHealth = maxHealth;
         this.followRange = followRange;
         this.knockbackResistance = knockbackResistance;
@@ -35,6 +43,10 @@ public class AttributeValues {
         this.armor = armor;
         this.armorToughness = armorToughness;
         this.luck = luck;
+        this.durability = durability;
+        this.stackSize = stackSize;
+        this.efficiency = efficiency;
+        this.enchantability = enchantability;
     }
 
     public float getMaxHealth() {
@@ -79,5 +91,21 @@ public class AttributeValues {
 
     public float getLuck() {
         return luck;
+    }
+
+    public int getDurability() {
+        return durability;
+    }
+
+    public int getStackSize() {
+        return stackSize;
+    }
+
+    public float getEfficiency() {
+        return efficiency;
+    }
+
+    public int getEnchantability() {
+        return enchantability;
     }
 }

@@ -23,8 +23,11 @@ public class AttMod {
 
     public static final Logger LOGGER = LogManager.getLogger(Tags.MOD_NAME);
 
+    // this variable holds the current map of String (resource location) and AttributeValues, which are then requested and modified at LAttributeModifier
     private static Map<String, AttributeValues> attributeMap;
 
+    // gets written every FMLPreInitializationEvent cycle with the contents of attributeModifiers.json (cfg).
+    // also gets requested in LAttributeModifier to modify each entry's attributes.
     public static Map<String, AttributeValues> getAttributeMap() {
         return attributeMap;
     }
@@ -54,7 +57,11 @@ public class AttMod {
                         2.0F,
                         2.0F,
                         1.0F,
-                        5.0F
+                        5.0F,
+                        50052,
+                        4,
+                        0,
+                        0
                 ));
 
                 attributeMap.put("minecraft:diamond_sword", new AttributeValues(
@@ -67,7 +74,11 @@ public class AttMod {
                         0,
                         5,
                         0,
-                        5.0F
+                        5.0F,
+                        0,
+                        0,
+                        0,
+                        0
                 ));
 
                 attributeMap.put("minecraft:diamond_pickaxe", new AttributeValues(
@@ -78,6 +89,10 @@ public class AttMod {
                         0,
                         -1,
                         -1,
+                        0,
+                        0,
+                        0,
+                        0,
                         0,
                         0,
                         0
@@ -93,6 +108,10 @@ public class AttMod {
                         0,
                         100,
                         10,
+                        0,
+                        0,
+                        0,
+                        0,
                         0
                 ));
 
@@ -105,7 +124,11 @@ public class AttMod {
                         1,
                         0,
                         0,
-                        10,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
                         0
                 ));
 
@@ -118,15 +141,18 @@ public class AttMod {
                         3,
                         0,
                         0,
-                        10,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
                         0
                 ));
 
                 FileUtils.writeStringToFile(this.configFile, gson.toJson(attributeMap), StandardCharsets.UTF_8);
             } else { // read and write as normal
-                Type mapType = (new TypeToken<HashMap<String, AttributeValues>>() {
+                Type mapType = (new TypeToken<HashMap<String, AttributeValues>>() {}).getType();
 
-                }).getType();
                 attributeMap = gson.fromJson(FileUtils.readFileToString(this.configFile, StandardCharsets.UTF_8), mapType);
             }
         } catch (IOException exception) {
