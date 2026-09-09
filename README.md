@@ -25,6 +25,7 @@ Complete control over any item's attributes vanilla or modded inside the configu
   - Armor
   - Armor Toughness
   - Luck
+  - And more (see wiki).
 
 ## Dependencies
 Expanded Events on CurseForge: https://www.curseforge.com/minecraft/mc-mods/expanded-events
