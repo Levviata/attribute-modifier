@@ -1,9 +1,10 @@
-package com.levviata.attmodifier;
+package com.levviata.attmodifier.serializer;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
+import com.levviata.attmodifier.AttributeValues;
 
 import java.lang.reflect.Type;
 
