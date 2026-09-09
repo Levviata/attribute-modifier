@@ -3,6 +3,8 @@ package com.levviata.attmodifier;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import com.levviata.attmodifier.serializer.AttributeValuesSerializer;
+import com.levviata.attmodifier.serializer.BaubleAttSerializer;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -27,13 +29,16 @@ public class AttMod {
     // this variable holds the current map of String (resource location) and AttributeValues, which are then requested and modified at LAttributeModifier
     private static Map<String, AttributeValues> attributeMap;
 
+    private static Map<String, AttributeValues> baubleAttMap;
+
     // gets written every FMLPreInitializationEvent cycle with the contents of attributeModifiers.json (cfg).
     // also gets requested in LAttributeModifier to modify each entry's attributes.
     public static Map<String, AttributeValues> getAttributeMap() {
         return attributeMap;
     }
 
-    private File configFile;
+    private File attributeConfig;
+    //private File baubleAttConfig;
 
     /**
      * <a href="https://cleanroommc.com/wiki/forge-mod-development/event#overview">
@@ -43,10 +48,14 @@ public class AttMod {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         try {
-            Gson gson = (new GsonBuilder()).setLenient().setPrettyPrinting().registerTypeAdapter(AttributeValues.class, new AttributeValuesSerializer()).create();
-            this.configFile = new File("config/attributeModifiers.json");
-            if (!this.configFile.exists()) { // make config and examples
-                this.configFile.createNewFile();
+            Gson attributeGson = (new GsonBuilder()).setLenient().setPrettyPrinting().registerTypeAdapter(AttributeValues.class, new AttributeValuesSerializer()).create();
+            //Gson baubleAttGson = (new GsonBuilder()).setLenient().setPrettyPrinting().registerTypeAdapter(AttributeValues.class, new BaubleAttSerializer()).create();
+
+            this.attributeConfig = new File("config/attributeModifiers.json");
+            //this.baubleAttConfig = new File("config/attributeModifiers/baubleAttModifiers.json");
+
+            if (!this.attributeConfig.exists()) { // make config and examples
+                this.attributeConfig.createNewFile();
                 attributeMap = new HashMap<>();
                 attributeMap.put("minecraft:diamond_hoe", new AttributeValues(
                         10,
@@ -192,11 +201,11 @@ public class AttMod {
                         0
                 ));
 
-                FileUtils.writeStringToFile(this.configFile, gson.toJson(attributeMap), StandardCharsets.UTF_8);
+                FileUtils.writeStringToFile(this.attributeConfig, attributeGson.toJson(attributeMap), StandardCharsets.UTF_8);
             } else { // read and write as normal
                 Type mapType = (new TypeToken<HashMap<String, AttributeValues>>() {}).getType();
 
-                attributeMap = gson.fromJson(FileUtils.readFileToString(this.configFile, StandardCharsets.UTF_8), mapType);
+                attributeMap = attributeGson.fromJson(FileUtils.readFileToString(this.attributeConfig, StandardCharsets.UTF_8), mapType);
             }
         } catch (IOException exception) {
             exception.printStackTrace();
