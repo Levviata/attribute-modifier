@@ -160,7 +160,7 @@ public class LAttributeModifier {
                         new AttributeModifier(MOVEMENT_SPEED_UUID, nameIn, attributeValues.getMovementSpeed(), 2));
             }
 
-            if (attributeValues.getDurability() >= -1.0F) { // if equal or above -1. -1 is unbreakable so I need to check for that
+            if (attributeValues.getDurability() >= -1.0F && attributeValues.getDurability() != 0F) { // if equal or above -1. -1 is unbreakable so I need to check for that
                 event.getItemStack().getItem().setMaxDamage(attributeValues.getDurability());
             }
 
