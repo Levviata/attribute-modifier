@@ -26,13 +26,12 @@ public class AttMod {
 
     public static final Logger LOGGER = LogManager.getLogger(Tags.MOD_NAME);
 
-    // this variable holds the current map of String (resource location) and AttributeValues, which are then requested and modified at LAttributeModifier
+    // gets written every FMLPreInitializationEvent cycle with the contents of attributeConfig
+    // which is then requested at LAttributeModifier
     private static Map<String, AttributeValues> attributeMap;
 
     private static Map<String, AttributeValues> baubleAttMap;
 
-    // gets written every FMLPreInitializationEvent cycle with the contents of attributeModifiers.json (cfg)
-    // which is then requested at LAttributeModifier
     public static Map<String, AttributeValues> getAttributeMap() {
         return attributeMap;
     }
