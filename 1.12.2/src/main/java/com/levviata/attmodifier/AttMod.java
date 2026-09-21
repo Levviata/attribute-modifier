@@ -31,8 +31,8 @@ public class AttMod {
 
     private static Map<String, AttributeValues> baubleAttMap;
 
-    // gets written every FMLPreInitializationEvent cycle with the contents of attributeModifiers.json (cfg).
-    // also gets requested in LAttributeModifier to modify each entry's attributes.
+    // gets written every FMLPreInitializationEvent cycle with the contents of attributeModifiers.json (cfg)
+    // which is then requested at LAttributeModifier
     public static Map<String, AttributeValues> getAttributeMap() {
         return attributeMap;
     }

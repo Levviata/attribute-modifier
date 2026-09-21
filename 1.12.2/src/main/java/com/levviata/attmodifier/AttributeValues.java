@@ -18,7 +18,7 @@ public class AttributeValues {
     private int harvestLevel;
 
     // every time FMLPreInitializationEvent runs, attributeMap gets written with the entries of attributeModifier.json (cfg)
-    // holding an entry for the map as <String, AttributeValues>, these are then requested at LAttributeModifier.java and modified.
+    // holding an entry for the map as <String, AttributeValues>, these are then requested at LAttributeModifier.java.
     public AttributeValues(
             float maxHealth,
             float followRange,
