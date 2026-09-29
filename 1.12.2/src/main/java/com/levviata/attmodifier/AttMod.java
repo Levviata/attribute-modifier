@@ -3,8 +3,6 @@ package com.levviata.attmodifier;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import com.levviata.attmodifier.serializer.AttributeValuesSerializer;
-import com.levviata.attmodifier.serializer.BaubleAttSerializer;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -30,14 +28,11 @@ public class AttMod {
     // which is then requested at LAttributeModifier
     private static Map<String, AttributeValues> attributeMap;
 
-    private static Map<String, AttributeValues> baubleAttMap;
-
     public static Map<String, AttributeValues> getAttributeMap() {
         return attributeMap;
     }
 
     private File attributeConfig;
-    //private File baubleAttConfig;
 
     /**
      * <a href="https://cleanroommc.com/wiki/forge-mod-development/event#overview">
@@ -48,10 +43,8 @@ public class AttMod {
     public void preInit(FMLPreInitializationEvent event) {
         try {
             Gson attributeGson = (new GsonBuilder()).setLenient().setPrettyPrinting().registerTypeAdapter(AttributeValues.class, new AttributeValuesSerializer()).create();
-            //Gson baubleAttGson = (new GsonBuilder()).setLenient().setPrettyPrinting().registerTypeAdapter(AttributeValues.class, new BaubleAttSerializer()).create();
 
             this.attributeConfig = new File("config/attributeModifiers.json");
-            //this.baubleAttConfig = new File("config/attributeModifiers/baubleAttModifiers.json");
 
             if (!this.attributeConfig.exists()) { // make config and examples
                 this.attributeConfig.createNewFile();

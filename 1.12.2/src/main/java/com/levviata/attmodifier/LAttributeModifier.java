@@ -19,7 +19,6 @@ import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import java.lang.reflect.Field;
 import java.util.*;
 
-import static com.levviata.attmodifier.AttMod.LOGGER;
 import static com.levviata.attmodifier.AttMod.getAttributeMap;
 
 public class LAttributeModifier {
@@ -30,25 +29,20 @@ public class LAttributeModifier {
     private final int MATERIAL_ENCHANTABILITY_INDEX = 9;
 
     //vanilla uuids
-    private static final UUID ATTACK_DAMAGE_MODIFIER = UUID.fromString("CB3F55D3-645C-4F38-A497-9C13A33DB5CF");
-    private static final UUID ATTACK_SPEED_MODIFIER = UUID.fromString("FA233E1C-4180-4865-B01B-BCCE9785ACA3");
+    private static final UUID ATTACK_DAMAGE_UUID = UUID.fromString("CB3F55D3-645C-4F38-A497-9C13A33DB5CF");
+    private static final UUID ATTACK_SPEED_UUID = UUID.fromString("FA233E1C-4180-4865-B01B-BCCE9785ACA3");
+
     // randomized uuids
-    private static final UUID MAX_HEALTH_UUID =
-            UUID.fromString("5b94c2f0-6a6e-4b7d-9f6f-8d2a4d7c1e01");
-    private static final UUID FOLLOW_RANGE_UUID =
-            UUID.fromString("7d31a6c2-15bb-47d5-aef5-3c94a87f3202");
-    private static final UUID KNOCKBACK_RESISTANCE_UUID =
-            UUID.fromString("93ef45e8-12c0-4f17-8c3e-61d2a94b5f03");
-    private static final UUID MOVEMENT_SPEED_UUID =
-            UUID.fromString("b7d3a6f9-58d4-4b2f-a0f7-9c13e4d8a904");
-    private static final UUID FLYING_SPEED_UUID =
-            UUID.fromString("d2f9c781-7b48-4c81-93ae-0d7f2b6e1505");
-    private static final UUID ARMOR_UUID =
-            UUID.fromString("e5a14d92-4f33-4d0f-b1ce-7a8d0f2c3606");
-    private static final UUID ARMOR_TOUGHNESS_UUID =
-            UUID.fromString("f84c7b13-2d75-4d8b-9ef4-4b0a91d54707");
-    private static final UUID LUCK_UUID =
-            UUID.fromString("18b4f6d0-8ec1-4cba-a57e-52d6f83a7808");
+    private static final UUID MAX_HEALTH_UUID = UUID.fromString("5b94c2f0-6a6e-4b7d-9f6f-8d2a4d7c1e01");
+    private static final UUID FOLLOW_RANGE_UUID = UUID.fromString("7d31a6c2-15bb-47d5-aef5-3c94a87f3202");
+    private static final UUID KNOCKBACK_RESISTANCE_UUID = UUID.fromString("93ef45e8-12c0-4f17-8c3e-61d2a94b5f03");
+    private static final UUID MOVEMENT_SPEED_UUID = UUID.fromString("b7d3a6f9-58d4-4b2f-a0f7-9c13e4d8a904");
+    private static final UUID FLYING_SPEED_UUID = UUID.fromString("d2f9c781-7b48-4c81-93ae-0d7f2b6e1505");
+    private static final UUID ARMOR_UUID = UUID.fromString("e5a14d92-4f33-4d0f-b1ce-7a8d0f2c3606");
+    private static final UUID ARMOR_TOUGHNESS_UUID = UUID.fromString("f84c7b13-2d75-4d8b-9ef4-4b0a91d54707");
+    private static final UUID LUCK_UUID = UUID.fromString("18b4f6d0-8ec1-4cba-a57e-52d6f83a7808");
+
+    private static final List<UUID> uuids = new ArrayList<>();
 
     private static final String nameIn = "Lev Attribute Modifier";
 
@@ -63,14 +57,11 @@ public class LAttributeModifier {
 
        int correctData = item.getMetadata();
 
-       if (item.isItemDamaged()) { // metadata isnt just different item types
-           //LOGGER.info("HELD IS DAMAGED BY {}", item.getItemDamage());
-           // fix metadata by removing item damage, this gives me item subtypes I guess?
+       if (item.isItemDamaged()) {
            correctData = item.getMetadata() - item.getItemDamage();
        }
 
-       if (correctData == 0) {// if correct data is 0
-           //LOGGER.info("HELD HAS NO METADATA {}", item.getMetadata());
+       if (correctData == 0) {
            key  = String.valueOf(ForgeRegistries.ITEMS.getKey(item.getItem()));
        } else {
            key  = ForgeRegistries.ITEMS.getKey(item.getItem()) + ":" + correctData;
@@ -83,7 +74,6 @@ public class LAttributeModifier {
        if (event.getSlotType() != naturalSlot) {
            return;
        }
-
        // MODIFY ATTRIBUTES //
         if (getAttributes().containsKey(key)) {
             AttributeValues attributeValues = getAttributes().get(key);
@@ -92,16 +82,17 @@ public class LAttributeModifier {
 
             // for int operationIn value:
             // 0 addition, 1 multiply base, 2 multiply total
+
             if (attributeValues.getAttackSpeed() != 0F) {
                 event.removeAttribute(SharedMonsterAttributes.ATTACK_SPEED);
                 event.addModifier(SharedMonsterAttributes.ATTACK_SPEED,
-                        new AttributeModifier(ATTACK_SPEED_MODIFIER, nameIn, attributeValues.getAttackSpeed(), 1));
+                        new AttributeModifier(ATTACK_SPEED_UUID, nameIn, attributeValues.getAttackSpeed(), 1));
             }
 
-            if (attributeValues.getAttackDamage() != 0F && attributeValues.getAttackDamage() > 0F) { // if its not zero and above zero
+            if (attributeValues.getAttackDamage() != 0F && attributeValues.getAttackDamage() > 0F) {
                 event.removeAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
                 event.addModifier(SharedMonsterAttributes.ATTACK_DAMAGE,
-                        new AttributeModifier(ATTACK_DAMAGE_MODIFIER, nameIn, attributeValues.getAttackDamage(), 0));
+                        new AttributeModifier(ATTACK_DAMAGE_UUID, nameIn, attributeValues.getAttackDamage(), 0));
             }
 
             if (attributeValues.getAttackDamage() < -0.0F) { // if its bigger than negative zero. negative zero is just zero no?
@@ -160,7 +151,7 @@ public class LAttributeModifier {
                         new AttributeModifier(MOVEMENT_SPEED_UUID, nameIn, attributeValues.getMovementSpeed(), 2));
             }
 
-            if (attributeValues.getDurability() >= -1.0F && attributeValues.getDurability() != 0F) { // if equal or above -1. -1 is unbreakable so I need to check for that
+            if (attributeValues.getDurability() >= -1.0F && attributeValues.getDurability() != 0F) {
                 event.getItemStack().getItem().setMaxDamage(attributeValues.getDurability());
             }
 
@@ -173,11 +164,6 @@ public class LAttributeModifier {
                         (ItemTool)event.getItemStack().getItem(),
                         (float)attributeValues.getEfficiency(), //maybe remove cast
                         TOOL_EFFICIENCY_INDEX);
-
-                /*Float efficiency = ReflectionHelper.getPrivateValue(ItemTool.class,
-                        (ItemTool)event.getItemStack().getItem(),
-                        1);
-                LOGGER.info("WE ARE GETTING " + efficiency + " VALUE");*/
             }
 
             if (attributeValues.getEnchantability() != 0F) {
@@ -197,9 +183,6 @@ public class LAttributeModifier {
         if (material == null) { // might not be necessary
             material = getObjectFromClass(ItemSword.class, Item.ToolMaterial.class, event.getItemStack().getItem());
         }
-
-        // TODO if its true that setting the enchantability for one item sets it for the whole material, restore the previous material enchantability.
-        // same for harvest level
 
         if  (material != null) {
             // check whether value is harvest level or enchantability
@@ -224,7 +207,6 @@ public class LAttributeModifier {
         if (event.phase == TickEvent.Phase.END) {
             // FLY SPEED FIX //
             EntityPlayer player = event.player;
-            // I suppose im getting "this.getHeldItemMainhand()"?
             ItemStack heldMainHand = player.getHeldEquipment().iterator().next();
 
             float defaultFlyingSpeed = 0.05F;
@@ -260,11 +242,24 @@ public class LAttributeModifier {
         {
             e.printStackTrace();
         }
-
         return null;
     }
 
     public static Map<String, AttributeValues> getAttributes() {
         return (getAttributeMap() != null) ? getAttributeMap() : EMPTY_ATTRIBUTE_MAP;
+    }
+
+    public static List<UUID> getUUIDs() {
+        uuids.add(ATTACK_DAMAGE_UUID);
+        uuids.add(ATTACK_SPEED_UUID);
+        uuids.add(MAX_HEALTH_UUID);
+        uuids.add(FOLLOW_RANGE_UUID);
+        uuids.add(KNOCKBACK_RESISTANCE_UUID);
+        uuids.add(MOVEMENT_SPEED_UUID);
+        uuids.add(FLYING_SPEED_UUID);
+        uuids.add(ARMOR_UUID);
+        uuids.add(ARMOR_TOUGHNESS_UUID);
+        uuids.add(LUCK_UUID);
+        return uuids;
     }
 }

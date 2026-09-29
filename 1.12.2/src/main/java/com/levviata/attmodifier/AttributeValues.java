@@ -1,16 +1,16 @@
 package com.levviata.attmodifier;
 
 public class AttributeValues {
-    private float maxHealth;
-    private float followRange;
-    private float knockbackResistance;
-    private float movementSpeed;
-    private float flyingSpeed;
-    private float attackDamage;
-    private float attackSpeed;
-    private float armor;
-    private float armorToughness;
-    private float luck;
+    private double maxHealth;
+    private double followRange;
+    private double knockbackResistance;
+    private double movementSpeed;
+    private double flyingSpeed;
+    private double attackDamage;
+    private double attackSpeed;
+    private double armor;
+    private double armorToughness;
+    private double luck;
     private int durability;
     private int stackSize;
     private float efficiency;
@@ -20,16 +20,16 @@ public class AttributeValues {
     // every time FMLPreInitializationEvent runs, attributeMap gets written with the entries of attributeModifier.json (cfg)
     // holding an entry for the map as <String, AttributeValues>, these are then requested at LAttributeModifier.java.
     public AttributeValues(
-            float maxHealth,
-            float followRange,
-            float knockbackResistance,
-            float movementSpeed,
-            float flyingSpeed,
-            float attackDamage,
-            float attackSpeed,
-            float armor,
-            float armorToughness,
-            float luck,
+            double maxHealth,
+            double followRange,
+            double knockbackResistance,
+            double movementSpeed,
+            double flyingSpeed,
+            double attackDamage,
+            double attackSpeed,
+            double armor,
+            double armorToughness,
+            double luck,
             int durability,
             int stackSize,
             float efficiency,
@@ -52,47 +52,47 @@ public class AttributeValues {
         this.harvestLevel = harvestLevel;
     }
 
-    public float getMaxHealth() {
+    public double getMaxHealth() {
         return maxHealth;
     }
 
-    public float getFollowRange() {
+    public double getFollowRange() {
         return followRange;
     }
 
-    public float getKnockbackResistance() {
+    public double getKnockbackResistance() {
         return knockbackResistance;
     }
 
-    public float getMovementSpeed() {
+    public double getMovementSpeed() {
         return movementSpeed;
     }
 
-    public float getFlyingSpeed() {
+    public double getFlyingSpeed() {
         return flyingSpeed;
     }
 
-    public void setFlyingSpeed(float flyingSpeed) {
+    public void setFlyingSpeed(double flyingSpeed) {
         this.flyingSpeed = flyingSpeed;
     }
 
-    public float getAttackDamage() {
+    public double getAttackDamage() {
         return attackDamage;
     }
 
-    public float getAttackSpeed() {
+    public double getAttackSpeed() {
         return attackSpeed;
     }
 
-    public float getArmor() {
+    public double getArmor() {
         return armor;
     }
 
-    public float getArmorToughness() {
+    public double getArmorToughness() {
         return armorToughness;
     }
 
-    public float getLuck() {
+    public double getLuck() {
         return luck;
     }
 
