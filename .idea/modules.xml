@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/damage-modifier.api.iml" filepath="$PROJECT_DIR$/.idea/modules/damage-modifier.api.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/damage-modifier.ideVirtualMain.iml" filepath="$PROJECT_DIR$/.idea/modules/damage-modifier.ideVirtualMain.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/damage-modifier.main.iml" filepath="$PROJECT_DIR$/.idea/modules/damage-modifier.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/damage-modifier.test.iml" filepath="$PROJECT_DIR$/.idea/modules/damage-modifier.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/versions/1.12.2/damage-modifier.1.12.2.api.iml" filepath="$PROJECT_DIR$/.idea/modules/versions/1.12.2/damage-modifier.1.12.2.api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/versions/1.12.2/damage-modifier.1.12.2.ideVirtualMain.iml" filepath="$PROJECT_DIR$/.idea/modules/versions/1.12.2/damage-modifier.1.12.2.ideVirtualMain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/versions/1.12.2/damage-modifier.1.12.2.main.iml" filepath="$PROJECT_DIR$/.idea/modules/versions/1.12.2/damage-modifier.1.12.2.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/versions/1.12.2/damage-modifier.1.12.2.test.iml" filepath="$PROJECT_DIR$/.idea/modules/versions/1.12.2/damage-modifier.1.12.2.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/versions/1.13/damage-modifier.1.13.api.iml" filepath="$PROJECT_DIR$/.idea/modules/versions/1.13/damage-modifier.1.13.api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/versions/1.13/damage-modifier.1.13.ideVirtualMain.iml" filepath="$PROJECT_DIR$/.idea/modules/versions/1.13/damage-modifier.1.13.ideVirtualMain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/versions/1.13/damage-modifier.1.13.main.iml" filepath="$PROJECT_DIR$/.idea/modules/versions/1.13/damage-modifier.1.13.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/versions/1.13/damage-modifier.1.13.test.iml" filepath="$PROJECT_DIR$/.idea/modules/versions/1.13/damage-modifier.1.13.test.iml" />
     </modules>
   </component>
 </project>
