@@ -21,7 +21,10 @@
         <module name="damage-modifier.main" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="1.8" />
+    <bytecodeTargetLevel target="1.8">
+      <module name="damage-modifier.1.12.2.test" target="8" />
+      <module name="damage-modifier.1.13.test" target="8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_STRING" value="-encoding utf8" />
