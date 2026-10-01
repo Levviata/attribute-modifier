@@ -18,7 +18,7 @@
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.checkerframework/checker-qual/3.33.0/de2b60b62da487644fc11f734e73c8b0b431238f/checker-qual-3.33.0.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_annotations/2.18.0/89b684257096f548fa39a7df9fdaa409d4d4df91/error_prone_annotations-2.18.0.jar" />
         </processorPath>
-        <module name="damage-modifier.1.12.2.main" />
+        <module name="com.levviata.damage-modifier.1.12.2.main" />
       </profile>
       <profile name="Gradle Imported" enabled="true">
         <outputRelativeToContentRoot value="true" />
@@ -36,13 +36,17 @@
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.checkerframework/checker-qual/3.33.0/de2b60b62da487644fc11f734e73c8b0b431238f/checker-qual-3.33.0.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_annotations/2.18.0/89b684257096f548fa39a7df9fdaa409d4d4df91/error_prone_annotations-2.18.0.jar" />
         </processorPath>
-        <module name="damage-modifier.1.13.main" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="1.8" />
+    <bytecodeTargetLevel target="1.8">
+      <module name="com.levviata.damage-modifier.1.13.test" target="8" />
+      <module name="damage-modifier.test" target="8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="com.levviata.damage-modifier.1.12.2.main" options="-AreobfSrgFile=C:\Users\Lev\.gradle\caches\minecraft\de\oceanlabs\mcp\mcp_stable\39\rfg_srgs\mcp-srg.srg -AoutSrgFile=C:\Users\Lev\Desktop\damage-modifier\versions\1.12.2\build\tmp\mixins\mixins.srg -AoutRefMapFile=C:\Users\Lev\Desktop\damage-modifier\versions\1.12.2\build\tmp\mixins\mixins.attmodifier.refmap.json" />
+      <module name="com.levviata.damage-modifier.1.13.main" options="-AreobfSrgFile=C:\Users\Lev\.gradle\caches\minecraft\de\oceanlabs\mcp\mcp_stable\39\rfg_srgs\mcp-srg.srg -AoutSrgFile=C:\Users\Lev\Desktop\damage-modifier\versions\1.13\build\tmp\mixins\mixins.srg -AoutRefMapFile=C:\Users\Lev\Desktop\damage-modifier\versions\1.13\build\tmp\mixins\mixins.attmodifier.refmap.json" />
       <module name="damage-modifier.1.12.2.main" options="-AreobfSrgFile=C:\Users\Lev\.gradle\caches\minecraft\de\oceanlabs\mcp\mcp_stable\39\rfg_srgs\mcp-srg.srg -AoutSrgFile=C:\Users\Lev\Desktop\damage-modifier\versions\1.12.2\build\tmp\mixins\mixins.srg -AoutRefMapFile=C:\Users\Lev\Desktop\damage-modifier\versions\1.12.2\build\tmp\mixins\mixins.attmodifier.refmap.json" />
       <module name="damage-modifier.1.13.main" options="-AreobfSrgFile=C:\Users\Lev\.gradle\caches\minecraft\de\oceanlabs\mcp\mcp_stable\39\rfg_srgs\mcp-srg.srg -AoutSrgFile=C:\Users\Lev\Desktop\damage-modifier\versions\1.13\build\tmp\mixins\mixins.srg -AoutRefMapFile=C:\Users\Lev\Desktop\damage-modifier\versions\1.13\build\tmp\mixins\mixins.attmodifier.refmap.json" />
     </option>

@@ -9,7 +9,6 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/versions/1.12.2" />
-            <option value="$PROJECT_DIR$/versions/1.13" />
           </set>
         </option>
       </GradleProjectSettings>

@@ -1,5 +1,6 @@
 pluginManagement {
     repositories {
+        //? <1.12.2 {
         maven {
             // RetroFuturaGradle
             name 'GTNH Maven'
@@ -12,6 +13,7 @@ pluginManagement {
         gradlePluginPortal()
         mavenCentral()
         mavenLocal()
+        //? }
     }
 }
 
@@ -28,7 +30,7 @@ stonecutter {
 
     // Configuration goes here
     create(getRootProject()) {
-        versions '1.12.2', '1.13'
+        versions '1.12.2'
     }
 }
 

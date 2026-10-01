@@ -68,8 +68,19 @@ java {
     }
 }
 
+def versionData = [
+        '1.12.2': [forge: '1.12.2-14.23.5.2864', java: 8],
+        '1.13': [forge: '1.13.2-25.0.223', java: 8]
+]
+
+def minecraftVersion = stonecutter.current.version
+def target = versionData[minecraftVersion]
+if (target == null) {
+    throw new GradleException("No Forge build data for Minecraft ${minecraftVersion}; add a row to forge/build.gradle")
+}
+
 minecraft {
-    mcVersion.set('1.12.2')
+    mcVersion.set(minecraftVersion)
 
     mcpMappingChannel.set(propertyString('mapping_channel'))
     mcpMappingVersion.set(propertyString('mapping_version'))
