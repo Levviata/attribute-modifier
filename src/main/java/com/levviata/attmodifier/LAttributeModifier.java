@@ -250,16 +250,18 @@ public class LAttributeModifier {
     }
 
     public static List<UUID> getUUIDs() {
-        uuids.add(ATTACK_DAMAGE_UUID);
-        uuids.add(ATTACK_SPEED_UUID);
-        uuids.add(MAX_HEALTH_UUID);
-        uuids.add(FOLLOW_RANGE_UUID);
-        uuids.add(KNOCKBACK_RESISTANCE_UUID);
-        uuids.add(MOVEMENT_SPEED_UUID);
-        uuids.add(FLYING_SPEED_UUID);
-        uuids.add(ARMOR_UUID);
-        uuids.add(ARMOR_TOUGHNESS_UUID);
-        uuids.add(LUCK_UUID);
-        return uuids;
+       if (uuids.isEmpty()) {
+           uuids.add(ATTACK_DAMAGE_UUID);
+           uuids.add(ATTACK_SPEED_UUID);
+           uuids.add(MAX_HEALTH_UUID);
+           uuids.add(FOLLOW_RANGE_UUID);
+           uuids.add(KNOCKBACK_RESISTANCE_UUID);
+           uuids.add(MOVEMENT_SPEED_UUID);
+           uuids.add(FLYING_SPEED_UUID);
+           uuids.add(ARMOR_UUID);
+           uuids.add(ARMOR_TOUGHNESS_UUID);
+           uuids.add(LUCK_UUID);
+       }
+       return uuids;
     }
 }
